@@ -1,0 +1,16 @@
+{
+  "room_id": "A",
+  "environment": "grass",
+  "mode": "simulation",
+  "backend_port": 8000,
+  "osc_output_host": "127.0.0.1",
+  "osc_output_port": 7001,
+  "microphone_device": -1,
+  "whisper_model": "base",
+  "whisper_device": "cpu",
+  "whisper_compute_type": "int8",
+  "audio_sample_rate": 44100,
+  "whisper_sample_rate": 16000,
+  "audio_process_seconds": 4,
+  "enable_vad": false
+}
