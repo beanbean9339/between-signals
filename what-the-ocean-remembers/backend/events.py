@@ -131,7 +131,7 @@ class MovementEvent(Event):
 
     @staticmethod
     def create(
-        source: SourceEnvironment,
+        source,  # Can be string "A"/"B" or SourceEnvironment enum
         present: bool,
         position_x: float,
         position_y: float,
@@ -140,6 +140,10 @@ class MovementEvent(Event):
         intensity: float = 0.0
     ) -> "MovementEvent":
         """Create a new movement event."""
+        # Convert string to enum if needed
+        if isinstance(source, str):
+            source = SourceEnvironment.ENVIRONMENT_A if source == "A" else SourceEnvironment.ENVIRONMENT_B
+        
         return MovementEvent(
             source=source,
             present=present,
@@ -189,12 +193,16 @@ class SpeechEvent(Event):
 
     @staticmethod
     def create(
-        source: SourceEnvironment,
+        source,  # Can be string "A"/"B" or SourceEnvironment enum
         text: str,
         language: str = "en",
         confidence: float = 1.0
     ) -> "SpeechEvent":
         """Create a new speech event."""
+        # Convert string to enum if needed
+        if isinstance(source, str):
+            source = SourceEnvironment.ENVIRONMENT_A if source == "A" else SourceEnvironment.ENVIRONMENT_B
+        
         return SpeechEvent(
             source=source,
             text=text,
@@ -239,11 +247,15 @@ class PresenceEvent(Event):
 
     @staticmethod
     def create(
-        source: SourceEnvironment,
+        source,  # Can be string "A"/"B" or SourceEnvironment enum
         present: bool,
         visitor_id: str = None
     ) -> "PresenceEvent":
         """Create a new presence event."""
+        # Convert string to enum if needed
+        if isinstance(source, str):
+            source = SourceEnvironment.ENVIRONMENT_A if source == "A" else SourceEnvironment.ENVIRONMENT_B
+        
         return PresenceEvent(
             source=source,
             present=present,
@@ -285,10 +297,14 @@ class AudioLevelEvent(Event):
 
     @staticmethod
     def create(
-        source: SourceEnvironment,
+        source,  # Can be string "A"/"B" or SourceEnvironment enum
         level: float
     ) -> "AudioLevelEvent":
         """Create a new audio level event."""
+        # Convert string to enum if needed
+        if isinstance(source, str):
+            source = SourceEnvironment.ENVIRONMENT_A if source == "A" else SourceEnvironment.ENVIRONMENT_B
+        
         return AudioLevelEvent(
             source=source,
             level=level
